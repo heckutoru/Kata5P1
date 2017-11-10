@@ -25,15 +25,18 @@ public class Kata5P1 {
         String url = "jdbc:sqlite:C:\\Users\\Entrar\\Downloads\\SQLiteDatabaseBrowserPortable\\Data\\Kata5.db";
         Connection conn = DriverManager.getConnection(url);
         Statement statement = conn.createStatement();
-        String sql = "Select * from PEOPLE;";
-        ResultSet result = statement.executeQuery(sql);
+        String sqlSelectPeople = "Select * from PEOPLE;";
+        ResultSet result = statement.executeQuery(sqlSelectPeople);
         while(result.next()){
             System.out.println("ID:" + result.getInt("id"));
             System.out.println("Name:" + result.getString("Name"));
             System.out.println("Apellidos:" + result.getString("Apellidos"));
             System.out.println("Departamento:" + result.getString("Departamento")+ "\n");
         }
-        
+        String sqlCreateTable = "CREATE TABLE `Mails` (\n" +
+"	`ID`	INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+"	`Mail`	TEXT NOT NULL\n" + ");";
+        statement.executeQuery(sqlCreateTable);
     }
     
 }
